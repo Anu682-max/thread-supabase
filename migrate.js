@@ -1,7 +1,7 @@
 import postgres from 'postgres'
 
 // Supabase PostgreSQL connection (Direct)
-const connectionString = 'postgresql://postgres:MEEM9k58dmDhKNgS@db.mpsxftupclabujyoomwg.supabase.co:5432/postgres'
+const connectionString = 'postgresql://postgres:_%2FBjNx%3F%23sZL63ps@db.ohruefdawnlhfjjcioqt.supabase.co:5432/postgres'
 
 const sql = postgres(connectionString, {
   ssl: 'require'

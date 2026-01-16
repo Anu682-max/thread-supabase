@@ -1,19 +1,115 @@
-# Thread Platform
+# ChatLay - Нийгмийн Сүлжээ
 
-Supabase ашигласан бүрэн Social Media платформ. Google/Facebook-ээр нэвтэрч, пост бичиж, like хийж, хэрэглэгчдийг дагах боломжтой.
+Supabase ашигласан бүрэн Social Media платформ. Google-ээр нэвтэрч, пост бичиж, like хийж, хэрэглэгчдийг дагах боломжтой.
 
-## Features
+## Боломжууд
 
-- Google/Facebook OAuth нэвтрэлт
+- Google OAuth нэвтрэлт
 - Пост бичих (280 тэмдэгт)
 - Like/Unlike (Realtime)
 - Follow/Unfollow
 - Profile засах
+- Community үүсгэх
+- Story оруулах
+- Мессеж илгээх
 - Dark UI
 
 ---
 
-# Тохиргооны заавар
+# Суулгах заавар
+
+## Шаардлага
+
+- Node.js 18+
+- npm эсвэл yarn
+- Supabase account (үнэгүй)
+
+---
+
+# Арга 1: Supabase CLI ашиглах (Санал болгох)
+
+## Алхам 1: Supabase CLI суулгах
+
+```bash
+# npm ашиглан суулгах
+npm install -g supabase
+
+# Хувилбар шалгах
+supabase --version
+```
+
+## Алхам 2: Supabase руу нэвтрэх
+
+```bash
+# Supabase Dashboard-аас Access Token авна
+# https://supabase.com/dashboard/account/tokens
+
+supabase login
+```
+
+Access Token оруулах:
+```
+Enter your access token: sbp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+## Алхам 3: Project link хийх
+
+```bash
+# Project folder руу орох
+cd thread-platform
+
+# Supabase init (анх удаа)
+supabase init
+
+# Project link хийх
+supabase link --project-ref YOUR_PROJECT_REF
+```
+
+**Project Ref олох:** Supabase Dashboard → Project Settings → General → Reference ID
+
+## Алхам 4: Database migration ажиллуулах
+
+```bash
+# Migration файлуудыг push хийх
+supabase db push
+
+# Эсвэл SQL файл шууд ажиллуулах
+supabase db execute -f sql/001_init.sql
+```
+
+## Алхам 5: Шууд SQL ажиллуулах (Postgres ашиглан)
+
+Хэрэв CLI ажиллахгүй бол `postgres` npm package ашиглаж болно:
+
+```bash
+# Postgres package суулгах
+npm install postgres
+
+# Setup script ажиллуулах
+node setup-new-db.mjs
+```
+
+`setup-new-db.mjs` файл:
+```javascript
+import postgres from 'postgres'
+
+const sql = postgres({
+  host: 'db.YOUR_PROJECT_REF.supabase.co',
+  port: 5432,
+  database: 'postgres',
+  username: 'postgres',
+  password: 'YOUR_DATABASE_PASSWORD',
+  ssl: 'require'
+})
+
+// Tables үүсгэх SQL-ууд...
+```
+
+**Database Password олох:** Supabase Dashboard → Project Settings → Database → Connection string
+
+---
+
+# Арга 2: Supabase Dashboard ашиглах
 
 ## Алхам 1: Supabase Project үүсгэх
 
@@ -37,7 +133,7 @@ Dashboard → [New Project]
 │                                                                 │
 │  Organization:  Personal                                        │
 │                                                                 │
-│  Name:          thread-platform                                 │
+│  Name:          chatlay-platform                                │
 │                                                                 │
 │  Database Password:  [Generate] ← Энэ password-г хадгална!     │
 │                                                                 │
@@ -48,10 +144,6 @@ Dashboard → [New Project]
 │  [Create new project]                                           │
 └─────────────────────────────────────────────────────────────────┘
 ```
-
-⏳ Project үүсэхэд 1-2 минут хүлээнэ.
-
----
 
 ## Алхам 2: Database Migration
 
@@ -65,46 +157,23 @@ Dashboard → SQL Editor → [New query]
 
 `sql/001_init.sql` файлын бүх агуулгыг хуулж, SQL Editor дээр paste хийгээд **[Run]** дарна.
 
-```sql
--- Энэ SQL-ийг ажиллуулна (файлаас хуулна)
-CREATE TABLE IF NOT EXISTS profiles (...);
-CREATE TABLE IF NOT EXISTS posts (...);
-CREATE TABLE IF NOT EXISTS likes (...);
-CREATE TABLE IF NOT EXISTS follows (...);
--- ... бусад
-```
-
-✅ "Success. No rows returned" гэж гарвал амжилттай.
-
-### 2.3 Table шалгах
-
-```
-Dashboard → Table Editor
-```
-
-4 table байх ёстой:
-- `profiles`
-- `posts`
-- `likes`
-- `follows`
-
 ---
 
-## Алхам 3: Google OAuth тохируулах
+# Google OAuth тохируулах
 
-### 3.1 Google Cloud Console
+## Алхам 1: Google Cloud Console
 
 ```
 https://console.cloud.google.com/
 ```
 
-### 3.2 Project үүсгэх/сонгох
+## Алхам 2: Project үүсгэх/сонгох
 
 ```
 Дээд талын dropdown → [New Project] эсвэл байгаа project сонгох
 ```
 
-### 3.3 OAuth consent screen
+## Алхам 3: OAuth consent screen
 
 ```
 APIs & Services → OAuth consent screen
@@ -125,7 +194,7 @@ APIs & Services → OAuth consent screen
 ┌─────────────────────────────────────────────────────────────────┐
 │  App information                                                │
 │                                                                 │
-│  App name:           Thread Platform                            │
+│  App name:           ChatLay                                    │
 │  User support email: your@email.com                             │
 │  Developer contact:  your@email.com                             │
 │                                                                 │
@@ -133,7 +202,15 @@ APIs & Services → OAuth consent screen
 └─────────────────────────────────────────────────────────────────┘
 ```
 
-### 3.4 Credentials үүсгэх
+## Алхам 4: Production горимд шилжүүлэх
+
+```
+OAuth consent screen → Publishing status → [PUBLISH APP]
+```
+
+⚠️ **Чухал:** Testing горимд зөвхөн test users нэвтэрч чадна. Production болгосноор бүх Google хэрэглэгч нэвтэрч чадна.
+
+## Алхам 5: Credentials үүсгэх
 
 ```
 APIs & Services → Credentials → [+ Create Credentials] → OAuth client ID
@@ -145,14 +222,12 @@ APIs & Services → Credentials → [+ Create Credentials] → OAuth client ID
 │                                                                 │
 │  Application type: Web application                              │
 │                                                                 │
-│  Name: Thread Platform                                          │
+│  Name: ChatLay Web                                              │
 │                                                                 │
 │  Authorized redirect URIs:                                      │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │  https://YOUR_PROJECT_ID.supabase.co/auth/v1/callback   │   │
+│  │  https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback  │   │
 │  └─────────────────────────────────────────────────────────┘   │
-│  ↑ Supabase Dashboard-аас Project URL авч /auth/v1/callback    │
-│    залгана                                                      │
 │                                                                 │
 │  [Create]                                                       │
 └─────────────────────────────────────────────────────────────────┘
@@ -160,7 +235,7 @@ APIs & Services → Credentials → [+ Create Credentials] → OAuth client ID
 
 **Client ID** болон **Client Secret** хуулж авна.
 
-### 3.5 Supabase дээр Google идэвхжүүлэх
+## Алхам 6: Supabase дээр Google идэвхжүүлэх
 
 ```
 Supabase Dashboard → Authentication → Providers → Google
@@ -186,100 +261,9 @@ Supabase Dashboard → Authentication → Providers → Google
 
 ---
 
-## Алхам 4: Facebook OAuth тохируулах
+# API Keys авах
 
-### 4.1 Facebook Developers
-
-```
-https://developers.facebook.com/
-```
-
-### 4.2 App үүсгэх
-
-```
-My Apps → [Create App]
-```
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  What do you want your app to do?                               │
-│                                                                 │
-│  ● Authenticate and request data from users with Facebook Login│
-│                                                                 │
-│  [Next]                                                         │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  App details                                                    │
-│                                                                 │
-│  Add an app name: Thread Platform                               │
-│  App contact email: your@email.com                              │
-│                                                                 │
-│  [Create app]                                                   │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### 4.3 Facebook Login тохируулах
-
-```
-App Dashboard → Add Product → Facebook Login → [Set Up]
-```
-
-```
-Facebook Login → Settings
-```
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  Valid OAuth Redirect URIs:                                     │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │  https://YOUR_PROJECT_ID.supabase.co/auth/v1/callback   │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                                                                 │
-│  [Save Changes]                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
-
-### 4.4 App ID, Secret авах
-
-```
-Settings → Basic
-```
-
-- **App ID** - хуулах
-- **App Secret** - [Show] дараад хуулах
-
-### 4.5 Supabase дээр Facebook идэвхжүүлэх
-
-```
-Supabase Dashboard → Authentication → Providers → Facebook
-```
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│  Facebook                                              [Enable] │
-│                                                                 │
-│  Client ID (App ID):                                            │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │  123456789012345                                        │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                                                                 │
-│  Client Secret (App Secret):                                    │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │  xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx                       │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                                                                 │
-│  [Save]                                                         │
-└─────────────────────────────────────────────────────────────────┘
-```
-
----
-
-## Алхам 5: API Keys авах
-
-### 5.1 Supabase API Settings
+## Supabase API Settings
 
 ```
 Supabase Dashboard → Project Settings → API
@@ -306,7 +290,7 @@ Supabase Dashboard → Project Settings → API
 
 ---
 
-## Алхам 6: .env файл үүсгэх
+# .env файл үүсгэх
 
 Project folder дотор `.env` файл үүсгэнэ:
 
@@ -324,7 +308,7 @@ VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ---
 
-## Алхам 7: App ажиллуулах
+# App ажиллуулах
 
 ```bash
 # Dependencies суулгах
@@ -338,6 +322,27 @@ Browser дээр `http://localhost:5173` нээгдэнэ.
 
 ---
 
+# Database Tables
+
+Энэ project дараах tables ашиглана:
+
+| Table | Тайлбар |
+|-------|---------|
+| `profiles` | Хэрэглэгчийн профайл |
+| `posts` | Постууд |
+| `likes` | Like-ууд |
+| `follows` | Дагалт |
+| `communities` | Community-үүд |
+| `community_members` | Community гишүүд |
+| `activity` | Үйл ажиллагааны түүх |
+| `bookmarks` | Хадгалсан постууд |
+| `stories` | Story-үүд |
+| `story_views` | Story үзсэн түүх |
+| `messages` | Мессежүүд |
+| `shares` | Хуваалцсан постууд |
+
+---
+
 # Бүтэц
 
 ```
@@ -348,11 +353,13 @@ thread-platform/
 ├── .env.example          # Environment variables жишээ
 ├── .gitignore
 ├── README.md             # Энэ заавар
+├── setup-new-db.mjs      # Database setup script
+├── fix-policies.js       # RLS policies засах script
 ├── sql/
 │   └── 001_init.sql      # Database migration
 └── src/
     ├── main.jsx          # React entry
-    ├── App.jsx           # Main component
+    ├── App.jsx           # Main component (бүх UI)
     ├── App.css           # App styles
     ├── index.css         # Global styles
     └── supabaseClient.js # Supabase connection
@@ -368,38 +375,29 @@ thread-platform/
 
 ## "relation 'profiles' does not exist"
 
-**Шийдэл:** `sql/001_init.sql` migration ажиллуулаагүй байна. SQL Editor дээр ажиллуулна.
+**Шийдэл:** Database migration ажиллуулаагүй байна. `setup-new-db.mjs` эсвэл SQL Editor дээр ажиллуулна.
 
-## Google/Facebook login redirect ажиллахгүй
+## Google login redirect ажиллахгүй
 
 **Шийдэл:**
-1. Redirect URI зөв эсэхийг шалгах: `https://YOUR_PROJECT_ID.supabase.co/auth/v1/callback`
-2. Google Cloud / Facebook Developer console дээр URI нэмсэн эсэхийг шалгах
+1. Redirect URI зөв эсэхийг шалгах: `https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback`
+2. Google Cloud Console дээр URI нэмсэн эсэхийг шалгах
 3. Supabase Providers дээр Client ID, Secret зөв эсэхийг шалгах
+4. Google OAuth app Production горимд байгаа эсэхийг шалгах
 
 ## "new row violates row-level security"
 
-**Шийдэл:** Migration дотор RLS disable хийсэн. Дахин ажиллуулна:
+**Шийдэл:** RLS policies засах:
+```bash
+node fix-policies.js
+```
+
+Эсвэл SQL Editor дээр:
 ```sql
 ALTER TABLE profiles DISABLE ROW LEVEL SECURITY;
 ALTER TABLE posts DISABLE ROW LEVEL SECURITY;
-ALTER TABLE likes DISABLE ROW LEVEL SECURITY;
-ALTER TABLE follows DISABLE ROW LEVEL SECURITY;
+-- ... бусад tables
 ```
-
----
-
-# Week 15 Хичээлийн бүтэц
-
-Энэ бүтэн project-ийг 5 хичээлээр заана:
-
-| # | Сэдэв | Агуулга |
-|---|-------|---------|
-| 1 | **Supabase Intro** | Project үүсгэх, Migration, API keys |
-| 2 | **Database Design** | profiles, posts, likes, follows tables |
-| 3 | **Authentication** | Google/Facebook OAuth тохируулах |
-| 4 | **Social Features** | Like, Follow, Realtime subscriptions |
-| 5 | **UI & Deploy** | Profile засах, Vercel deploy |
 
 ---
 
@@ -417,4 +415,4 @@ npm run build
 
 ---
 
-**Амжилт хүсье!**
+**Амжилт хүсье! 🎉**

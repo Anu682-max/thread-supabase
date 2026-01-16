@@ -978,19 +978,19 @@ function App() {
         <div className="floating-elements">
           <div className="chat-bubble bubble-1">
             <span className="bubble-avatar">👋</span>
-            <span className="bubble-text">Hello!</span>
+            <span className="bubble-text">Сайн уу!</span>
           </div>
           <div className="chat-bubble bubble-2">
             <span className="bubble-avatar">🚀</span>
-            <span className="bubble-text">Let's connect</span>
+            <span className="bubble-text">Холбогдоё</span>
           </div>
           <div className="chat-bubble bubble-3">
             <span className="bubble-avatar">💬</span>
-            <span className="bubble-text">Share ideas</span>
+            <span className="bubble-text">Санаа хуваалцая</span>
           </div>
           <div className="chat-bubble bubble-4">
             <span className="bubble-avatar">✨</span>
-            <span className="bubble-text">Inspire others</span>
+            <span className="bubble-text">Урамшуулъя</span>
           </div>
         </div>
 
@@ -1001,13 +1001,13 @@ function App() {
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
               </svg>
             </div>
-            <h1>Thread</h1>
+            <h1>ChatLay</h1>
           </div>
-          <p className="login-tagline">Connect, Share, Inspire</p>
-          <p className="login-desc">Join the next generation social platform where ideas come alive.</p>
+          <p className="login-tagline">Холбогдох, Хуваалцах, Урамшуулах</p>
+          <p className="login-desc">Санаа бодлоо хуваалцах шинэ үеийн нийгмийн сүлжээ.</p>
 
           {authError && authError !== 'success' && <div className="auth-error">{authError}</div>}
-          {authError === 'success' && <div className="auth-success">✓ Account created! Please login.</div>}
+          {authError === 'success' && <div className="auth-success">✓ Бүртгэл үүслээ! Нэвтэрнэ үү.</div>}
 
           <button
             className="btn-google"
@@ -1020,58 +1020,58 @@ function App() {
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            {authLoading ? 'Connecting...' : 'Continue with Google'}
+            {authLoading ? 'Холбогдож байна...' : 'Google-ээр нэвтрэх'}
           </button>
 
           <div className="auth-divider">
-            <span>or</span>
+            <span>эсвэл</span>
           </div>
 
           <form onSubmit={authMode === 'login' ? signInWithEmail : signUpWithEmail} className="auth-form">
             <input
               type="email"
-              placeholder="Email"
+              placeholder="Имэйл"
               value={email}
               onChange={e => setEmail(e.target.value)}
               required
             />
             <input
               type="password"
-              placeholder="Password (min 6 characters)"
+              placeholder="Нууц үг (хамгийн багадаа 6 тэмдэгт)"
               value={password}
               onChange={e => setPassword(e.target.value)}
               minLength={6}
               required
             />
             <button type="submit" className="btn-email" disabled={authLoading}>
-              {authLoading ? 'Please wait...' : (authMode === 'login' ? 'Sign In' : 'Create Account')}
+              {authLoading ? 'Түр хүлээнэ үү...' : (authMode === 'login' ? 'Нэвтрэх' : 'Бүртгүүлэх')}
             </button>
           </form>
 
           <div className="auth-toggle">
             {authMode === 'login' ? (
-              <p>Don't have an account? <button onClick={() => { setAuthMode('signup'); setAuthError('') }}>Sign Up</button></p>
+              <p>Бүртгэл байхгүй юу? <button onClick={() => { setAuthMode('signup'); setAuthError('') }}>Бүртгүүлэх</button></p>
             ) : (
-              <p>Already have an account? <button onClick={() => { setAuthMode('login'); setAuthError('') }}>Sign In</button></p>
+              <p>Бүртгэлтэй юу? <button onClick={() => { setAuthMode('login'); setAuthError('') }}>Нэвтрэх</button></p>
             )}
           </div>
 
           <div className="login-footer">
-            <p>By continuing, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a></p>
+            <p>Үргэлжлүүлснээр та манай <a href="#">Үйлчилгээний нөхцөл</a> болон <a href="#">Нууцлалын бодлого</a>-г зөвшөөрч байна</p>
           </div>
 
           <div className="login-features">
             <div className="feature">
               <span className="feature-icon">🔒</span>
-              <span>Secure & Private</span>
+              <span>Аюулгүй & Хувийн</span>
             </div>
             <div className="feature">
               <span className="feature-icon">⚡</span>
-              <span>Real-time Chat</span>
+              <span>Шууд чат</span>
             </div>
             <div className="feature">
               <span className="feature-icon">🌍</span>
-              <span>Global Community</span>
+              <span>Дэлхийн нийгэмлэг</span>
             </div>
           </div>
         </div>
@@ -1101,19 +1101,19 @@ function App() {
           </button>
           {showPostMenu === post.id && (
             <div className="post-menu">
-              {user.id === post.user_id && <button onClick={() => { startEditPost(post); setShowPostMenu(null) }}><Icons.Edit /> Edit</button>}
-              {user.id === post.user_id && <button onClick={() => { togglePinPost(post); setShowPostMenu(null) }}><Icons.Pin /> {post.is_pinned ? 'Unpin' : 'Pin'}</button>}
-              {user.id === post.user_id && <button onClick={() => deletePost(post.id)}><Icons.Trash /> Delete</button>}
-              <button onClick={() => { startQuoteRepost(post); setShowPostMenu(null) }}><Icons.Repeat /> Quote</button>
-              {user.id !== post.user_id && <button onClick={() => { setShowTipModal(post); setShowPostMenu(null) }}><Icons.DollarSign /> Tip</button>}
-              {user.id !== post.user_id && <button onClick={() => blockUser(post.user_id)}><Icons.Slash /> Block</button>}
-              <button onClick={() => reportPost(post.id, 'spam')}><Icons.Flag /> Report</button>
+              {user.id === post.user_id && <button onClick={() => { startEditPost(post); setShowPostMenu(null) }}><Icons.Edit /> Засах</button>}
+              {user.id === post.user_id && <button onClick={() => { togglePinPost(post); setShowPostMenu(null) }}><Icons.Pin /> {post.is_pinned ? 'Буулгах' : 'Бэхлэх'}</button>}
+              {user.id === post.user_id && <button onClick={() => deletePost(post.id)}><Icons.Trash /> Устгах</button>}
+              <button onClick={() => { startQuoteRepost(post); setShowPostMenu(null) }}><Icons.Repeat /> Иш татах</button>
+              {user.id !== post.user_id && <button onClick={() => { setShowTipModal(post); setShowPostMenu(null) }}><Icons.DollarSign /> Шагнах</button>}
+              {user.id !== post.user_id && <button onClick={() => blockUser(post.user_id)}><Icons.Slash /> Хориглох</button>}
+              <button onClick={() => reportPost(post.id, 'spam')}><Icons.Flag /> Мэдэгдэх</button>
             </div>
           )}
         </div>
-        {post.is_pinned && <div className="pinned-indicator"><Icons.Pin /> Pinned</div>}
+        {post.is_pinned && <div className="pinned-indicator"><Icons.Pin /> Бэхлэсэн</div>}
         <p className="post-content" onClick={() => goToThread(post)}>{renderContent(post.content)}</p>
-        {post.edited_at && <span className="edited-indicator">edited</span>}
+        {post.edited_at && <span className="edited-indicator">засварласан</span>}
         {post.tags?.length > 0 && (
           <div className="post-tags">
             {post.tags.map(tag => <span key={tag} className="tag" onClick={() => { setSearchQuery(tag); setPage('search') }}>#{tag}</span>)}
@@ -1183,7 +1183,7 @@ function App() {
     <div className="story-bar">
       <div className="story-item add-story" onClick={() => storyInputRef.current?.click()}>
         <div className="story-avatar add"><Icons.Plus /></div>
-        <span>Add Story</span>
+        <span>Story нэмэх</span>
         <input type="file" accept="image/*" ref={storyInputRef} hidden onChange={e => { setStoryImage(e.target.files[0]); createStory() }} />
       </div>
       {stories.map((group, i) => (
@@ -1225,7 +1225,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setEditingPost(null)}>
           <div className="modal" onClick={e => e.stopPropagation()}>
             <div className="modal-header">
-              <h3>Edit Post</h3>
+              <h3>Нийтлэл засах</h3>
               <button onClick={() => setEditingPost(null)}><Icons.X /></button>
             </div>
             <textarea value={editPostContent} onChange={e => setEditPostContent(e.target.value)} rows={4} />
@@ -1282,11 +1282,11 @@ function App() {
       <header className="topbar">
         <div className="topbar-left">
           <button className="menu-btn" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}><Icons.Menu /></button>
-          <h1 onClick={() => setPage('home')}>bodol</h1>
+          <h1 onClick={() => setPage('home')}>ChatLay</h1>
         </div>
         <div className="topbar-search">
           <Icons.Search />
-          <input placeholder="Search..." value={searchQuery} onChange={e => { setSearchQuery(e.target.value); setPage('search') }} />
+          <input placeholder="Хайх..." value={searchQuery} onChange={e => { setSearchQuery(e.target.value); setPage('search') }} />
         </div>
         <div className="topbar-right">
           <button className="icon-btn" onClick={() => { loadConversations(); setPage('messages') }}><Icons.MessageCircle /></button>
@@ -1306,14 +1306,14 @@ function App() {
       {mobileMenuOpen && (
         <div className="mobile-overlay" onClick={() => setMobileMenuOpen(false)}>
           <nav className="mobile-menu" onClick={e => e.stopPropagation()}>
-            <button onClick={() => { setPage('home'); setMobileMenuOpen(false) }}><Icons.Home /> Home</button>
-            <button onClick={() => { setPage('explore'); setMobileMenuOpen(false) }}><Icons.Compass /> Explore</button>
-            <button onClick={() => { setPage('create'); setMobileMenuOpen(false) }}><Icons.Plus /> Create</button>
-            <button onClick={() => { setPage('communities'); setMobileMenuOpen(false) }}><Icons.Users /> Communities</button>
-            <button onClick={() => { setPage('messages'); setMobileMenuOpen(false) }}><Icons.MessageCircle /> Messages</button>
-            <button onClick={() => { setPage('bookmarks'); setMobileMenuOpen(false) }}><Icons.Bookmark /> Saved</button>
-            <button onClick={() => { setPage('activity'); setMobileMenuOpen(false) }}><Icons.Bell /> Notifications</button>
-            <button onClick={() => { setPage('profile'); setMobileMenuOpen(false) }}><Icons.User /> Profile</button>
+            <button onClick={() => { setPage('home'); setMobileMenuOpen(false) }}><Icons.Home /> Нүүр</button>
+            <button onClick={() => { setPage('explore'); setMobileMenuOpen(false) }}><Icons.Compass /> Судлах</button>
+            <button onClick={() => { setPage('create'); setMobileMenuOpen(false) }}><Icons.Plus /> Нийтлэх</button>
+            <button onClick={() => { setPage('communities'); setMobileMenuOpen(false) }}><Icons.Users /> Нийгэмлэгүүд</button>
+            <button onClick={() => { setPage('messages'); setMobileMenuOpen(false) }}><Icons.MessageCircle /> Мессеж</button>
+            <button onClick={() => { setPage('bookmarks'); setMobileMenuOpen(false) }}><Icons.Bookmark /> Хадгалсан</button>
+            <button onClick={() => { setPage('activity'); setMobileMenuOpen(false) }}><Icons.Bell /> Мэдэгдэл</button>
+            <button onClick={() => { setPage('profile'); setMobileMenuOpen(false) }}><Icons.User /> Профайл</button>
           </nav>
         </div>
       )}
@@ -1322,18 +1322,18 @@ function App() {
         {/* Left Sidebar */}
         <aside className="sidebar-left">
           <nav className="nav">
-            <button className={page === 'home' ? 'active' : ''} onClick={() => setPage('home')}><Icons.Home /><span>Home</span></button>
-            <button className={page === 'explore' ? 'active' : ''} onClick={() => setPage('explore')}><Icons.Compass /><span>Explore</span></button>
-            <button className={page === 'create' ? 'active' : ''} onClick={() => setPage('create')}><Icons.Plus /><span>Create</span></button>
-            <button className={page === 'communities' ? 'active' : ''} onClick={() => setPage('communities')}><Icons.Users /><span>Communities</span></button>
-            <button className={page === 'messages' ? 'active' : ''} onClick={() => { loadConversations(); setPage('messages') }}><Icons.MessageCircle /><span>Messages</span></button>
-            <button className={page === 'bookmarks' ? 'active' : ''} onClick={() => setPage('bookmarks')}><Icons.Bookmark /><span>Saved</span></button>
-            <button className={page === 'activity' ? 'active' : ''} onClick={() => setPage('activity')}><Icons.Bell /><span>Notifications</span></button>
-            <button className={page === 'profile' ? 'active' : ''} onClick={() => setPage('profile')}><Icons.User /><span>Profile</span></button>
-            <button className={page === 'lists' ? 'active' : ''} onClick={() => setPage('lists')}><Icons.List /><span>Lists</span></button>
-            <button className={page === 'topics' ? 'active' : ''} onClick={() => setPage('topics')}><Icons.Hash /><span>Topics</span></button>
-            <button className={page === 'drafts' ? 'active' : ''} onClick={() => setPage('drafts')}><Icons.FileText /><span>Drafts</span></button>
-            <button className={page === 'settings' ? 'active' : ''} onClick={() => setPage('settings')}><Icons.Settings /><span>Settings</span></button>
+            <button className={page === 'home' ? 'active' : ''} onClick={() => setPage('home')}><Icons.Home /><span>Нүүр</span></button>
+            <button className={page === 'explore' ? 'active' : ''} onClick={() => setPage('explore')}><Icons.Compass /><span>Судлах</span></button>
+            <button className={page === 'create' ? 'active' : ''} onClick={() => setPage('create')}><Icons.Plus /><span>Нийтлэх</span></button>
+            <button className={page === 'communities' ? 'active' : ''} onClick={() => setPage('communities')}><Icons.Users /><span>Нийгэмлэгүүд</span></button>
+            <button className={page === 'messages' ? 'active' : ''} onClick={() => { loadConversations(); setPage('messages') }}><Icons.MessageCircle /><span>Мессеж</span></button>
+            <button className={page === 'bookmarks' ? 'active' : ''} onClick={() => setPage('bookmarks')}><Icons.Bookmark /><span>Хадгалсан</span></button>
+            <button className={page === 'activity' ? 'active' : ''} onClick={() => setPage('activity')}><Icons.Bell /><span>Мэдэгдэл</span></button>
+            <button className={page === 'profile' ? 'active' : ''} onClick={() => setPage('profile')}><Icons.User /><span>Профайл</span></button>
+            <button className={page === 'lists' ? 'active' : ''} onClick={() => setPage('lists')}><Icons.List /><span>Жагсаалт</span></button>
+            <button className={page === 'topics' ? 'active' : ''} onClick={() => setPage('topics')}><Icons.Hash /><span>Сэдэв</span></button>
+            <button className={page === 'drafts' ? 'active' : ''} onClick={() => setPage('drafts')}><Icons.FileText /><span>Ноорог</span></button>
+            <button className={page === 'settings' ? 'active' : ''} onClick={() => setPage('settings')}><Icons.Settings /><span>Тохиргоо</span></button>
           </nav>
         </aside>
 
@@ -1344,11 +1344,11 @@ function App() {
             <>
               <StoryBar />
               <div className="page-header">
-                <h2>Home</h2>
-                <button className="btn-create" onClick={() => setPage('create')}><Icons.Plus /> Create</button>
+                <h2>Нүүр</h2>
+                <button className="btn-create" onClick={() => setPage('create')}><Icons.Plus /> Нийтлэх</button>
               </div>
               {posts.length === 0 ? (
-                <div className="empty">No posts yet</div>
+                <div className="empty">Одоогоор нийтлэл байхгүй байна</div>
               ) : (
                 posts.map(post => <PostCard key={post.id} post={post} />)
               )}
@@ -1358,9 +1358,9 @@ function App() {
           {/* Explore */}
           {page === 'explore' && (
             <>
-              <h2>Explore</h2>
+              <h2>Судлах</h2>
               <div className="explore-section">
-                <h3><Icons.TrendingUp /> Trending</h3>
+                <h3><Icons.TrendingUp /> Трэнд</h3>
                 <div className="trending-tags">
                   {trendingTags.map(t => (
                     <button key={t.tag} className="trending-tag" onClick={() => { setSearchQuery(t.tag); setPage('search') }}>
@@ -1369,7 +1369,7 @@ function App() {
                   ))}
                 </div>
               </div>
-              <h3>Popular Posts</h3>
+              <h3>Алдартай нийтлэлүүд</h3>
               {posts.slice().sort((a, b) => b.likeCount - a.likeCount).slice(0, 10).map(post => <PostCard key={post.id} post={post} />)}
             </>
           )}
@@ -1377,14 +1377,14 @@ function App() {
           {/* Create */}
           {page === 'create' && (
             <>
-              <h2>Create Post</h2>
+              <h2>Шинэ нийтлэл</h2>
               <form className="create-form" onSubmit={showSchedule ? createScheduledPost : createPost}>
                 <select value={selectedCommunity} onChange={e => setSelectedCommunity(e.target.value)}>
-                  <option value="">Choose community (optional)</option>
+                  <option value="">Нийгэмлэг сонгох (заавал биш)</option>
                   {myCommunities.map(c => c && <option key={c.id} value={c.id}>r/{c.name}</option>)}
                 </select>
-                <textarea placeholder="What's on your mind? Use @username to mention" value={newPost} onChange={e => setNewPost(e.target.value)} rows={4} />
-                <input placeholder="Tags (comma separated)" value={postTags} onChange={e => setPostTags(e.target.value)} />
+                <textarea placeholder="Та юу бодож байна? @хэрэглэгч ашиглан дурдах" value={newPost} onChange={e => setNewPost(e.target.value)} rows={4} />
+                <input placeholder="Тэмдэглэгээ (таслалаар тусгаарлана)" value={postTags} onChange={e => setPostTags(e.target.value)} />
 
                 {/* Quote Post Preview */}
                 {quotePost && (
@@ -1408,20 +1408,20 @@ function App() {
                 {/* Poll */}
                 {showPollForm && (
                   <div className="poll-form">
-                    <input placeholder="Poll question" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} />
+                    <input placeholder="Санал асуулгын асуулт" value={pollQuestion} onChange={e => setPollQuestion(e.target.value)} />
                     {pollOptions.map((opt, i) => (
-                      <input key={i} placeholder={`Option ${i + 1}`} value={opt} onChange={e => {
+                      <input key={i} placeholder={`Сонголт ${i + 1}`} value={opt} onChange={e => {
                         const newOpts = [...pollOptions]; newOpts[i] = e.target.value; setPollOptions(newOpts)
                       }} />
                     ))}
-                    <button type="button" onClick={() => setPollOptions([...pollOptions, ''])}>+ Add Option</button>
+                    <button type="button" onClick={() => setPollOptions([...pollOptions, ''])}>+ Сонголт нэмэх</button>
                   </div>
                 )}
 
                 {/* Schedule */}
                 {showSchedule && (
                   <div className="schedule-form">
-                    <label><Icons.Clock /> Schedule for:</label>
+                    <label><Icons.Clock /> Хуваарилах:</label>
                     <input type="datetime-local" value={scheduledDate} onChange={e => setScheduledDate(e.target.value)} />
                   </div>
                 )}
@@ -1432,13 +1432,13 @@ function App() {
                   <button type="button" onClick={() => setShowGifPicker(true)}><Icons.Smile /> GIF</button>
                   <button type="button" onClick={() => setShowPollForm(!showPollForm)}><Icons.BarChart /></button>
                   <button type="button" onClick={() => setShowSchedule(!showSchedule)}><Icons.Clock /></button>
-                  <button type="button" onClick={saveDraft}><Icons.FileText /> Draft</button>
+                  <button type="button" onClick={saveDraft}><Icons.FileText /> Ноорог</button>
                 </div>
                 {postImages.length > 0 && (
                   <div className="selected-files">{postImages.map(f => f.name).join(', ')}</div>
                 )}
                 <button type="submit" className="btn-submit" disabled={uploading || (!newPost.trim() && postImages.length === 0 && !selectedGif)}>
-                  {uploading ? 'Posting...' : showSchedule ? 'Schedule' : 'Post'}
+                  {uploading ? 'Нийтэлж байна...' : showSchedule ? 'Хуваарилах' : 'Нийтлэх'}
                 </button>
               </form>
             </>
@@ -1449,15 +1449,15 @@ function App() {
             <>
               <div className="page-header">
                 <button className="btn-back" onClick={() => setPage('home')}><Icons.ArrowLeft /></button>
-                <h2>Thread</h2>
+                <h2>Хэлэлцүүлэг</h2>
               </div>
               <PostCard post={viewingThread} />
               <div className="reply-form">
-                <textarea placeholder="Write a reply..." value={newReply} onChange={e => setNewReply(e.target.value)} rows={2} />
-                <button onClick={() => createReply(viewingThread.id, viewingThread.user_id)} disabled={!newReply.trim()}>Reply</button>
+                <textarea placeholder="Хариулт бичих..." value={newReply} onChange={e => setNewReply(e.target.value)} rows={2} />
+                <button onClick={() => createReply(viewingThread.id, viewingThread.user_id)} disabled={!newReply.trim()}>Хариулах</button>
               </div>
               <div className="replies">
-                <h3>{viewingThread.replies?.length || 0} Replies</h3>
+                <h3>{viewingThread.replies?.length || 0} Хариулт</h3>
                 {viewingThread.replies?.map(reply => (
                   <div key={reply.id} className="reply">
                     <img src={getAvatar(reply.profiles?.avatar_url, reply.profiles?.username)} className="reply-avatar" />
@@ -1481,9 +1481,9 @@ function App() {
           {/* Messages */}
           {page === 'messages' && (
             <>
-              <h2>Messages</h2>
+              <h2>Мессеж</h2>
               {conversations.length === 0 ? (
-                <div className="empty">No conversations yet</div>
+                <div className="empty">Одоогоор харилцан яриа байхгүй байна</div>
               ) : (
                 conversations.map(c => (
                   <div key={c.id} className="conversation-item" onClick={() => { setViewingChat(c); loadMessages(c.id); setPage('chat') }}>
@@ -1515,7 +1515,7 @@ function App() {
                 ))}
               </div>
               <div className="chat-input">
-                <input placeholder="Type a message..." value={newMessage} onChange={e => setNewMessage(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendMessage()} />
+                <input placeholder="Мессеж бичих..." value={newMessage} onChange={e => setNewMessage(e.target.value)} onKeyPress={e => e.key === 'Enter' && sendMessage()} />
                 <button onClick={sendMessage}><Icons.Send /></button>
               </div>
             </>
@@ -1524,29 +1524,29 @@ function App() {
           {/* Search */}
           {page === 'search' && (
             <>
-              <h2>Search</h2>
+              <h2>Хайлт</h2>
               {searchQuery ? (
                 <>
-                  <h3 className="section-title">Users</h3>
-                  {filteredUsers.length === 0 ? <div className="empty small">No users</div> : filteredUsers.slice(0, 5).map(u => (
+                  <h3 className="section-title">Хэрэглэгчид</h3>
+                  {filteredUsers.length === 0 ? <div className="empty small">Хэрэглэгч олдсонгүй</div> : filteredUsers.slice(0, 5).map(u => (
                     <div key={u.id} className="user-item" onClick={() => goToProfile(u.id)}>
                       <img src={getAvatar(u.avatar_url, u.username)} />
                       <div><div className="name">{u.display_name} {u.is_verified && <Icons.Verified />}</div><div className="handle">@{u.username}</div></div>
                     </div>
                   ))}
-                  <h3 className="section-title">Posts</h3>
-                  {filteredPosts.length === 0 ? <div className="empty small">No posts</div> : filteredPosts.map(post => <PostCard key={post.id} post={post} />)}
+                  <h3 className="section-title">Нийтлэлүүд</h3>
+                  {filteredPosts.length === 0 ? <div className="empty small">Нийтлэл олдсонгүй</div> : filteredPosts.map(post => <PostCard key={post.id} post={post} />)}
                 </>
-              ) : <div className="empty">Type to search...</div>}
+              ) : <div className="empty">Хайхын тулд бичнэ үү...</div>}
             </>
           )}
 
           {/* Bookmarks */}
           {page === 'bookmarks' && (
             <>
-              <h2>Saved</h2>
+              <h2>Хадгалсан</h2>
               {posts.filter(p => bookmarks.includes(p.id)).length === 0 ? (
-                <div className="empty">No saved posts</div>
+                <div className="empty">Хадгалсан нийтлэл байхгүй байна</div>
               ) : (
                 posts.filter(p => bookmarks.includes(p.id)).map(post => <PostCard key={post.id} post={post} />)
               )}
@@ -1557,15 +1557,15 @@ function App() {
           {page === 'communities' && (
             <>
               <div className="page-header">
-                <h2>Communities</h2>
+                <h2>Нийгэмлэгүүд</h2>
                 <button className="btn-create" onClick={() => setPage('create-community')}><Icons.Plus /></button>
               </div>
               {communities.map(c => (
                 <div key={c.id} className="community-item" onClick={() => goToCommunity(c)}>
                   <img src={c.image_url} />
-                  <div><div className="name">r/{c.name}</div><div className="members">{c.memberCount || 0} members</div></div>
+                  <div><div className="name">r/{c.name}</div><div className="members">{c.memberCount || 0} гишүүн</div></div>
                   <button className={`btn-join ${isMember(c.id) ? 'joined' : ''}`} onClick={e => { e.stopPropagation(); isMember(c.id) ? leaveCommunity(c.id) : joinCommunity(c.id) }}>
-                    {isMember(c.id) ? 'Joined' : 'Join'}
+                    {isMember(c.id) ? 'Нэгдсэн' : 'Нэгдэх'}
                   </button>
                 </div>
               ))}
@@ -1577,12 +1577,12 @@ function App() {
             <>
               <div className="page-header">
                 <button className="btn-back" onClick={() => setPage('communities')}><Icons.ArrowLeft /></button>
-                <h2>Create Community</h2>
+                <h2>Нийгэмлэг үүсгэх</h2>
               </div>
               <form className="create-form" onSubmit={createCommunity}>
-                <input placeholder="Community name" value={newCommunityName} onChange={e => setNewCommunityName(e.target.value)} required />
-                <textarea placeholder="Description" value={newCommunityDesc} onChange={e => setNewCommunityDesc(e.target.value)} rows={3} />
-                <button type="submit" className="btn-submit" disabled={!newCommunityName.trim()}>Create</button>
+                <input placeholder="Нийгэмлэгийн нэр" value={newCommunityName} onChange={e => setNewCommunityName(e.target.value)} required />
+                <textarea placeholder="Тайлбар" value={newCommunityDesc} onChange={e => setNewCommunityDesc(e.target.value)} rows={3} />
+                <button type="submit" className="btn-submit" disabled={!newCommunityName.trim()}>Үүсгэх</button>
               </form>
             </>
           )}
@@ -1595,14 +1595,14 @@ function App() {
                 <div>
                   <h2>r/{viewingCommunity.name}</h2>
                   <p>{viewingCommunity.description}</p>
-                  <span>{viewingCommunity.memberCount || 0} members</span>
+                  <span>{viewingCommunity.memberCount || 0} гишүүн</span>
                 </div>
                 <button className={`btn-join ${isMember(viewingCommunity.id) ? 'joined' : ''}`} onClick={() => isMember(viewingCommunity.id) ? leaveCommunity(viewingCommunity.id) : joinCommunity(viewingCommunity.id)}>
-                  {isMember(viewingCommunity.id) ? 'Joined' : 'Join'}
+                  {isMember(viewingCommunity.id) ? 'Нэгдсэн' : 'Нэгдэх'}
                 </button>
               </div>
               {viewingCommunity.posts?.length === 0 ? (
-                <div className="empty">No posts</div>
+                <div className="empty">Нийтлэл байхгүй байна</div>
               ) : (
                 viewingCommunity.posts?.map(post => <PostCard key={post.id} post={post} showCommunity={false} />)
               )}
@@ -1612,19 +1612,19 @@ function App() {
           {/* Activity */}
           {page === 'activity' && (
             <>
-              <h2>Notifications</h2>
+              <h2>Мэдэгдэл</h2>
               {activities.length === 0 ? (
-                <div className="empty">No notifications</div>
+                <div className="empty">Мэдэгдэл байхгүй байна</div>
               ) : (
                 activities.map(a => (
                   <div key={a.id} className="activity-item">
                     <img src={getAvatar(a.actor?.avatar_url, a.actor?.username)} />
                     <div>
                       <strong>{a.actor?.display_name}</strong>
-                      {a.type === 'like' && ' liked your post'}
-                      {a.type === 'reply' && ' replied to your post'}
-                      {a.type === 'follow' && ' followed you'}
-                      {a.type === 'mention' && ' mentioned you'}
+                      {a.type === 'like' && ' таны нийтлэлд лайк дарлаа'}
+                      {a.type === 'reply' && ' таны нийтлэлд хариулсан'}
+                      {a.type === 'follow' && ' таныг дагалаа'}
+                      {a.type === 'mention' && ' таныг дурдсан'}
                       <span className="time">{formatTime(a.created_at)}</span>
                     </div>
                   </div>
@@ -1640,11 +1640,11 @@ function App() {
                 <img src={getAvatar(profile?.avatar_url, user.email)} />
                 {editMode ? (
                   <div className="profile-edit">
-                    <input value={editName} onChange={e => setEditName(e.target.value)} placeholder="Name" />
-                    <textarea value={editBio} onChange={e => setEditBio(e.target.value)} placeholder="Bio" rows={2} />
+                    <input value={editName} onChange={e => setEditName(e.target.value)} placeholder="Нэр" />
+                    <textarea value={editBio} onChange={e => setEditBio(e.target.value)} placeholder="Танилцуулга" rows={2} />
                     <div className="edit-btns">
-                      <button onClick={saveProfile}>Save</button>
-                      <button onClick={() => setEditMode(false)}>Cancel</button>
+                      <button onClick={saveProfile}>Хадгалах</button>
+                      <button onClick={() => setEditMode(false)}>Болих</button>
                     </div>
                   </div>
                 ) : (
@@ -1652,13 +1652,13 @@ function App() {
                     <h2>{profile?.display_name} {profile?.is_verified && <Icons.Verified />}</h2>
                     <p className="handle">@{profile?.username}</p>
                     {profile?.bio && <p className="bio">{profile.bio}</p>}
-                    <button onClick={() => { setEditName(profile?.display_name || ''); setEditBio(profile?.bio || ''); setEditMode(true) }}>Edit Profile</button>
+                    <button onClick={() => { setEditName(profile?.display_name || ''); setEditBio(profile?.bio || ''); setEditMode(true) }}>Профайл засах</button>
                   </div>
                 )}
               </div>
-              <h3 className="section-title">Your Posts</h3>
+              <h3 className="section-title">Таны нийтлэлүүд</h3>
               {posts.filter(p => p.user_id === user.id).length === 0 ? (
-                <div className="empty small">No posts yet</div>
+                <div className="empty small">Одоогоор нийтлэл байхгүй байна</div>
               ) : (
                 posts.filter(p => p.user_id === user.id).map(post => <PostCard key={post.id} post={post} />)
               )}
@@ -1670,7 +1670,7 @@ function App() {
             <>
               <div className="page-header">
                 <button className="btn-back" onClick={() => setPage('home')}><Icons.ArrowLeft /></button>
-                <h2>Profile</h2>
+                <h2>Профайл</h2>
               </div>
               <div className="profile-header">
                 <img src={getAvatar(viewingProfile.avatar_url, viewingProfile.username)} />
@@ -1678,24 +1678,24 @@ function App() {
                   <h2>{viewingProfile.display_name} {viewingProfile.is_verified && <Icons.Verified />}</h2>
                   <p className="handle">@{viewingProfile.username}</p>
                   <div className="profile-stats">
-                    <span><strong>{viewingProfile.posts?.length || 0}</strong> posts</span>
-                    <span><strong>{viewingProfile.followersCount || 0}</strong> followers</span>
-                    <span><strong>{viewingProfile.followingCount || 0}</strong> following</span>
+                    <span><strong>{viewingProfile.posts?.length || 0}</strong> нийтлэл</span>
+                    <span><strong>{viewingProfile.followersCount || 0}</strong> дагагч</span>
+                    <span><strong>{viewingProfile.followingCount || 0}</strong> дагаж байгаа</span>
                   </div>
                   {viewingProfile.bio && <p className="bio">{viewingProfile.bio}</p>}
                   <div className="profile-actions">
                     <button className={`btn-follow ${viewingProfile.isFollowing ? 'following' : ''}`} onClick={() => { toggleFollow(viewingProfile); setViewingProfile({ ...viewingProfile, isFollowing: !viewingProfile.isFollowing }) }}>
-                      {viewingProfile.isFollowing ? 'Following' : 'Follow'}
+                      {viewingProfile.isFollowing ? 'Дагаж байна' : 'Дагах'}
                     </button>
                     <button className="btn-message" onClick={() => startConversation(viewingProfile.id)}>
-                      <Icons.MessageCircle /> Message
+                      <Icons.MessageCircle /> Мессеж
                     </button>
                   </div>
                 </div>
               </div>
-              <h3 className="section-title">Posts</h3>
+              <h3 className="section-title">Нийтлэлүүд</h3>
               {viewingProfile.posts?.length === 0 ? (
-                <div className="empty small">No posts</div>
+                <div className="empty small">Нийтлэл байхгүй байна</div>
               ) : (
                 viewingProfile.posts?.map(post => <PostCard key={post.id} post={{...post, profiles: viewingProfile}} />)
               )}
@@ -1705,17 +1705,17 @@ function App() {
           {/* Settings */}
           {page === 'settings' && (
             <>
-              <h2>Settings</h2>
+              <h2>Тохиргоо</h2>
               <div className="settings-section">
-                <h3><Icons.Palette /> Theme</h3>
+                <h3><Icons.Palette /> Загвар</h3>
                 <div className="theme-options">
-                  <button className={themeMode === 'light' ? 'active' : ''} onClick={() => setThemeMode('light')}>Light</button>
-                  <button className={themeMode === 'dark' ? 'active' : ''} onClick={() => setThemeMode('dark')}>Dark</button>
+                  <button className={themeMode === 'light' ? 'active' : ''} onClick={() => setThemeMode('light')}>Цайвар</button>
+                  <button className={themeMode === 'dark' ? 'active' : ''} onClick={() => setThemeMode('dark')}>Бараан</button>
                   <button className={themeMode === 'oled' ? 'active' : ''} onClick={() => setThemeMode('oled')}>OLED</button>
                 </div>
               </div>
               <div className="settings-section">
-                <h3><Icons.Palette /> Accent Color</h3>
+                <h3><Icons.Palette /> Өнгө</h3>
                 <div className="color-options">
                   {['#1d9bf0', '#7856ff', '#f91880', '#ff7a00', '#00ba7c', '#ffd400'].map(color => (
                     <button key={color} className={`color-btn ${accentColor === color ? 'active' : ''}`} style={{background: color}} onClick={() => setAccentColor(color)} />
@@ -1723,14 +1723,14 @@ function App() {
                 </div>
               </div>
               <div className="settings-section">
-                <h3><Icons.VolumeX /> Muted Keywords</h3>
+                <h3><Icons.VolumeX /> Хаагдсан үгс</h3>
                 <div className="muted-list">
                   {mutedKeywords.map(kw => (
                     <span key={kw} className="muted-chip">{kw} <button onClick={() => removeMutedKeyword(kw)}>×</button></span>
                   ))}
                 </div>
                 <form onSubmit={e => { e.preventDefault(); addMutedKeyword(e.target.keyword.value); e.target.reset() }} className="add-muted-form">
-                  <input name="keyword" placeholder="Add keyword to mute..." />
+                  <input name="keyword" placeholder="Хаах үг нэмэх..." />
                   <button type="submit"><Icons.Plus /></button>
                 </form>
               </div>
@@ -1741,14 +1741,14 @@ function App() {
           {page === 'lists' && (
             <>
               <div className="page-header">
-                <h2>Lists</h2>
+                <h2>Жагсаалт</h2>
               </div>
               <form onSubmit={e => { e.preventDefault(); createList() }} className="create-list-form">
-                <input placeholder="New list name..." value={newListName} onChange={e => setNewListName(e.target.value)} />
+                <input placeholder="Шинэ жагсаалтын нэр..." value={newListName} onChange={e => setNewListName(e.target.value)} />
                 <button type="submit" disabled={!newListName.trim()}><Icons.Plus /></button>
               </form>
               {lists.length === 0 ? (
-                <div className="empty">No lists yet</div>
+                <div className="empty">Жагсаалт байхгүй байна</div>
               ) : (
                 lists.map(list => (
                   <div key={list.id} className="list-item" onClick={() => { setViewingList(list); setPage('view-list') }}>
@@ -1782,16 +1782,16 @@ function App() {
           {/* Drafts */}
           {page === 'drafts' && (
             <>
-              <h2>Drafts</h2>
+              <h2>Ноорог</h2>
               {drafts.length === 0 ? (
-                <div className="empty">No drafts saved</div>
+                <div className="empty">Ноорог байхгүй байна</div>
               ) : (
                 drafts.map(draft => (
                   <div key={draft.id} className="draft-item">
                     <p>{draft.content?.slice(0, 100)}{draft.content?.length > 100 ? '...' : ''}</p>
                     <div className="draft-actions">
-                      <button onClick={() => loadDraft(draft)}><Icons.Edit /> Edit</button>
-                      <button onClick={() => deleteDraft(draft.id)}><Icons.Trash /> Delete</button>
+                      <button onClick={() => loadDraft(draft)}><Icons.Edit /> Засах</button>
+                      <button onClick={() => deleteDraft(draft.id)}><Icons.Trash /> Устгах</button>
                     </div>
                   </div>
                 ))
@@ -1803,25 +1803,25 @@ function App() {
         {/* Right Sidebar */}
         <aside className="sidebar-right">
           <div className="sidebar-section">
-            <h3><Icons.TrendingUp /> Trending</h3>
+            <h3><Icons.TrendingUp /> Трэнд</h3>
             {trendingTags.slice(0, 5).map(t => (
               <div key={t.tag} className="trending-item" onClick={() => { setSearchQuery(t.tag); setPage('search') }}>
                 <span className="tag-name">#{t.tag}</span>
-                <span className="tag-count">{t.count} posts</span>
+                <span className="tag-count">{t.count} нийтлэл</span>
               </div>
             ))}
           </div>
           <div className="sidebar-section">
-            <h3>Communities</h3>
+            <h3>Нийгэмлэгүүд</h3>
             {communities.slice(0, 5).map(c => (
               <div key={c.id} className="sidebar-item" onClick={() => goToCommunity(c)}>
                 <img src={c.image_url} />
-                <div><div className="name">r/{c.name}</div><div className="sub">{c.memberCount || 0} members</div></div>
+                <div><div className="name">r/{c.name}</div><div className="sub">{c.memberCount || 0} гишүүн</div></div>
               </div>
             ))}
           </div>
           <div className="sidebar-section">
-            <h3>Who to Follow</h3>
+            <h3>Дагах хүмүүс</h3>
             {users.slice(0, 4).map(u => (
               <div key={u.id} className="sidebar-item" onClick={() => goToProfile(u.id)}>
                 <img src={getAvatar(u.avatar_url, u.username)} />

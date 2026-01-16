@@ -1,8 +1,13 @@
 import postgres from 'postgres'
 
-const connectionString = 'postgresql://postgres:MEEM9k58dmDhKNgS@db.mpsxftupclabujyoomwg.supabase.co:5432/postgres'
-
-const sql = postgres(connectionString, { ssl: 'require' })
+const sql = postgres({
+  host: 'db.ohruefdawnlhfjjcioqt.supabase.co',
+  port: 5432,
+  database: 'postgres',
+  username: 'postgres',
+  password: 'WDFBcKYU8KbHgee3',
+  ssl: 'require'
+})
 
 async function fixPolicies() {
   console.log('Fixing RLS policies for all tables...\n')
@@ -18,10 +23,6 @@ async function fixPolicies() {
     'bookmarks',
     'stories',
     'story_views',
-    'polls',
-    'poll_votes',
-    'reactions',
-    'post_views',
     'messages',
     'shares'
   ]
