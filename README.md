@@ -16,6 +16,30 @@ Supabase ашигласан бүрэн Social Media платформ. Google-э�
 
 ---
 
+# Хурдан эхлэл (5 минут)
+
+Хамгийн хурдан туршиж үзэх:
+
+1. **Supabase дээр SQL ажиллуулах**
+   - https://supabase.com руу орж шинэ project үүсгэнэ
+   - SQL Editor дээр `sql/complete-setup.sql` файлыг ажиллуулна
+
+2. **Google OAuth тохируулах**
+   - https://console.cloud.google.com дээр OAuth Client үүсгэнэ
+   - Supabase Authentication → Providers → Google дээр идэвхжүүлнэ
+
+3. **Төслийг ажиллуулах**
+   ```bash
+   npm install
+   cp .env.example .env
+   # .env файлд Supabase URL ба ANON_KEY оруулна
+   npm run dev
+   ```
+
+4. http://localhost:5173 дээр нээнэ - бэлэн! 🚀
+
+---
+
 # Суулгах заавар
 
 ## Шаардлага
@@ -23,6 +47,7 @@ Supabase ашигласан бүрэн Social Media платформ. Google-э�
 - Node.js 18+
 - npm эсвэл yarn
 - Supabase account (үнэгүй)
+- Google Cloud account (үнэгүй)
 
 ---
 
@@ -155,7 +180,13 @@ Dashboard → SQL Editor → [New query]
 
 ### 2.2 Migration ажиллуулах
 
-`sql/001_init.sql` файлын бүх агуулгыг хуулж, SQL Editor дээр paste хийгээд **[Run]** дарна.
+**Санал болгох:** `sql/complete-setup.sql` файлын бүх агуулгыг хуулж, SQL Editor дээр paste хийгээд **[Run]** дарна.
+
+Энэ нь:
+- 12 хүснэгт үүсгэнэ (profiles, posts, likes, follows, communities, messages, stories гэх мэт)
+- Indexes болон triggers нэмнэ
+- Row Level Security (RLS) policies тохируулна
+- 3 жишээ community үүсгэнэ
 
 ---
 
@@ -227,15 +258,28 @@ APIs & Services → Credentials → [+ Create Credentials] → OAuth client ID
 │  Authorized redirect URIs:                                      │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback  │   │
+│  │  http://localhost:5173                                  │   │
 │  └─────────────────────────────────────────────────────────┘   │
 │                                                                 │
 │  [Create]                                                       │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+⚠️ **Чухал:** `http://localhost:5173` нэмэхээ бүү мартаарай! Үгүй бол local development-д ажиллахгүй.
+
 **Client ID** болон **Client Secret** хуулж авна.
 
-## Алхам 6: Supabase дээр Google идэвхжүүлэх
+## Алхам 6: Email баталгаажуулалт идэвхгүй болгох
+
+```
+Supabase Dashboard → Authentication → Settings
+```
+
+**"Enable email confirmations"** toggle-ийг **OFF** болгоно уу.
+
+Энэ нь шинэ хэрэглэгчид email баталгаажуулалтгүйгээр шууд нэвтрэх боломж олгоно.
+
+## Алхам 7: Supabase дээр Google идэвхжүүлэх
 
 ```
 Supabase Dashboard → Authentication → Providers → Google
@@ -381,9 +425,19 @@ thread-platform/
 
 **Шийдэл:**
 1. Redirect URI зөв эсэхийг шалгах: `https://YOUR_PROJECT_REF.supabase.co/auth/v1/callback`
-2. Google Cloud Console дээр URI нэмсэн эсэхийг шалгах
+2. Google Cloud Console дээр `http://localhost:5173` нэмсэн эсэхийг шалгах
 3. Supabase Providers дээр Client ID, Secret зөв эсэхийг шалгах
-4. Google OAuth app Production горимд байгаа эсэхийг шалгах
+4. Google OAuth app Production горимд байгаа эсэхийг шалгах (OAuth consent screen → PUBLISH APP)
+5. Тохиргоо идэвхжихэд 5 минут хүлээх
+
+## "Testing" горимд зөвхөн test users нэвтэрч чадна
+
+**Шийдэл:**
+```
+Google Cloud Console → APIs & Services → OAuth consent screen → [PUBLISH APP]
+```
+
+Publishing status: "In production" болгосноор хэн ч нэвтэрч чадна.
 
 ## "new row violates row-level security"
 
